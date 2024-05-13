@@ -227,6 +227,7 @@
 @media screen and (max-width: 764px) {
   .footer {
     box-sizing: border-box;
+    max-width: 282px;
   }
 
   .footer__copyright {
@@ -236,6 +237,7 @@
 
 @media screen and (max-width: 320px) {
   .header {
+    flex-direction: column;
   }
 
   .header__logo {
@@ -288,6 +290,7 @@
 @media screen and (max-width: 320px) {
   .footer {
     box-sizing: border-box;
+    max-width: 282px;
   }
 
   .footer__copyright {
