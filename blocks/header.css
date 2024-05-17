@@ -24,7 +24,7 @@
 @media screen and (max-width: 420px) {
   .header {
     flex-direction: column;
-    height: 56px;
+    /* height: 56px; */
   }
 
   .header__logo {

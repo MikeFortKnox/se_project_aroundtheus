@@ -10,4 +10,6 @@ This project is a webpage created in the style of a social media app. It is made
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
+- [Link to the Github](git@github.com:MikeFortKnox/se_project_aroundtheus.git)
+
 - [Link to the video](https://drive.google.com/file/d/1ByEyENyurFAN69b6zs0f47TB7piBpUKK/view?usp=sharing)
