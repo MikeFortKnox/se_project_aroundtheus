@@ -24,9 +24,14 @@
 @media screen and (max-width: 420px) {
   .header {
     flex-direction: column;
+    height: 56px;
   }
 
   .header__logo {
     justify-content: center;
+    margin-left: 27px;
+    height: 24px;
+    width: 126px;
+    margin-bottom: 28px;
   }
 }

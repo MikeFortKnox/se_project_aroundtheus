@@ -71,6 +71,9 @@
   line-height: 22px;
   font-weight: 400;
   grid-area: description;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin: 0;
   /* padding: 1rem 3rem; */
   font-family: Inter, arial, Arial, Helvetica, sans-serif;
@@ -112,8 +115,8 @@
   .profile__description {
     max-width: 282px;
     text-align: center;
-    margin-top: 10px;
-    padding-bottom: 50px;
+    /* margin-top: 10px; */
+    padding-bottom: 20px;
     /* font-size: 14px; */
     /* padding: 0; */
     /* margin: auto; */
@@ -160,13 +163,15 @@
 
   .profile__image {
     margin-left: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
   }
 
   .profile__description {
     max-width: 282px;
     text-align: center;
-    /* font-size: 14px;
-    padding: 1rem 3rem;
+    font-size: 14px;
+    /* padding: 1rem 3rem;
     margin: auto; */
   }
 
@@ -178,6 +183,8 @@
   .profile__edit-button {
     max-width: 100%;
     margin-left: 10px;
+    width: 18px;
+    height: 18px;
   }
 
   .profile__title {
