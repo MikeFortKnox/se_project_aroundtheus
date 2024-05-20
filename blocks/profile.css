@@ -28,7 +28,7 @@
   background: transparent url(../images/Edit-icon.svg) center no-repeat;
   height: 24px;
   width: 24px;
-  padding: 10px;
+  padding: 8px;
   grid-area: button;
   border: 1px solid #fff;
 }
@@ -117,7 +117,7 @@
     max-width: 282px;
     text-align: center;
     /* margin-top: 10px; */
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     /* font-size: 14px; */
     /* padding: 0; */
     /* margin: auto; */

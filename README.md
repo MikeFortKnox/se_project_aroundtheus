@@ -12,4 +12,6 @@ This project is a webpage created in the style of a social media app. It is made
 
 - [Link to the Github](git@github.com:MikeFortKnox/se_project_aroundtheus.git)
 
+[Link to deployed pages](https://mikefortknox.github.io/se_project_aroundtheus/)
+
 - [Link to the video](https://drive.google.com/file/d/1ByEyENyurFAN69b6zs0f47TB7piBpUKK/view?usp=sharing)
