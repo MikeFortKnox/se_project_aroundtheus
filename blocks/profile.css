@@ -110,7 +110,8 @@
   }
 
   .profile__image {
-    margin-left: 30px;
+    margin: 0;
+    /* margin-left: 30px; */
   }
 
   .profile__description {
@@ -137,6 +138,7 @@
   }
 
   .profile__title {
+    max-width: 100%;
     font-size: 22px;
     text-align: center;
     line-height: 1.2;
