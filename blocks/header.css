@@ -7,7 +7,7 @@
 .header__logo {
   width: 173px;
   height: 33px;
-  padding-bottom: 45px;
+  padding-bottom: 35px;
 }
 
 @media screen and (max-width: 900px) {
@@ -17,7 +17,7 @@
 
   .header__logo {
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 50px;
     height: 24px;
   }
 }
