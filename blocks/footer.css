@@ -17,21 +17,20 @@
     /* box-sizing: border-box; */
     max-width: 282px;
     width: 581px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 
   .footer__copyright {
     /* max-width: 100%; */
     font-size: 14px;
-    margin-top: 40px;
-    /* margin-left: 60px; */
+    /* margin-top: 40px; */
   }
 }
 
 @media screen and (max-width: 420px) {
   .footer {
-    margin-left: auto;
+    /* margin-left: auto; */
     margin-right: auto;
   }
 }
