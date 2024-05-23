@@ -90,7 +90,6 @@
   .profile {
     flex-direction: column;
     max-width: 282px;
-    align-items: center;
     justify-content: center;
   }
 
