@@ -50,7 +50,7 @@
   display: grid;
 }
 
-.modal__form-title {
+.modal__input {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border: 0;
   color: black;
@@ -60,9 +60,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-bottom: 30px;
 }
 
-.modal__form-description {
+/* .modal__form-description {
   width: 358px;
   color: black;
   border: 0;
@@ -72,7 +73,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
+} */
 
 .modal__button-save {
   display: block;
@@ -83,4 +84,7 @@
   color: white;
   cursor: pointer;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 900px) {
 }
