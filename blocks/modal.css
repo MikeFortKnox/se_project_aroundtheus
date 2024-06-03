@@ -83,8 +83,8 @@
 .modal__button-save:hover {
   opacity: 0.5;
 }
-
-@media screen and (max-width: 420px) {
+/* was max-width 420 */
+@media screen and (max-width: 560px) {
   .modal {
     max-width: 100%;
     box-sizing: border-box;

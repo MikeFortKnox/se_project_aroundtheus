@@ -40,7 +40,7 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
-  document.querySelector("#card-template").contentFirstElementChild;
+  document.querySelector("#card-template").content.firstElementChild;
 
 // Functions
 
@@ -53,8 +53,11 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTextEl = cardElement.querySelector(".card__text");
   //set the path to the image to the link filed of the object
+
   //set the image alt text to the name field of the object
   cardTextEl.textContent = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.image;
   // return the ready HTML element with the filled-in data
   return cardElement;
 }
