@@ -57,7 +57,7 @@ function getCardElement(cardData) {
   //set the image alt text to the name field of the object
   cardTextEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.image;
+  cardImageEl.alt = cardData.name;
   // return the ready HTML element with the filled-in data
   return cardElement;
 }
@@ -79,7 +79,7 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-profileEditModal.classList.remove("modal_opened");
+// profileEditModal.classList.remove("modal_opened");
 const profileCloseButton = document.querySelector("#profile-close-button");
 
 profileCloseButton.addEventListener("click", closePopup);
