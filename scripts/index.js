@@ -28,9 +28,9 @@ const initialCards = [
 console.log(initialCards);
 
 // Elements
-const profileModalCloseButton = profileEditModal.querySelector("modal__close");
+const profileEditModal = document.querySelector("#edit-modal");
+const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
 const profileEditButton = document.querySelector("#edit-modal");
-const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
@@ -44,14 +44,8 @@ const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
+
 // Functions
-
-// function openModal() {
-//   nameInput.value = profileTitle.textContent;
-//   jobInput.value = profileDescription.textContent;
-//   profileEditModal.classList.add("modal_opened");
-// }
-
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -64,6 +58,19 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTextEl = cardElement.querySelector(".card__text");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  // find delete button
+
+  // add the event listener to the delete button
+  //cardElement.remove();
+
+  // add click listener to the cardImage element
+  // openModal with previewImageModal
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(".card__like-button_active");
+  });
+
   cardTextEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -81,7 +88,11 @@ function handleProfileEditSubmit(e) {
 
 // Event Listeners
 
-profileEditButton.addEventListener("click", () => openModal(profileEditModal));
+profileEditButton.addEventListener("click", () => {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
+});
 
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
