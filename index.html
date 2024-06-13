@@ -108,25 +108,51 @@
         <p class="footer__copyright">@ 2024 Around The U.S.</p>
       </footer>
     </div>
-
-    <div class="modal" id="profile-edit-modal">
+    <!-- Edit Modal -->
+    <div class="modal" id="edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="profile-close-button"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
           <input
             type="text"
-            class="modal__input"
+            class="modal__input modal__input-type-name"
             id="profile-title-input"
-            name="title"
+            name="Name"
             placeholder="Jacques Cousteau"
           />
           <input
             type="text"
             class="modal__input"
-            id="profile-description-input"
+            id="profile-description-input modal__input-type-description"
             name="description"
             placeholder="Explorer"
+          />
+          <button class="modal__button-save">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add card modal -->
+
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="profile-close-button"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form">
+          <input
+            type="text"
+            class="modal__input modal__input-type-title"
+            id="add-card-form"
+            name="title"
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            class="modal__input modal__input-type-url"
+            id="profile-description-input"
+            name="url"
+            placeholder="Image URL"
           />
           <button class="modal__button-save">Save</button>
         </form>
