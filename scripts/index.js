@@ -51,7 +51,7 @@ function openModal(modal) {
 }
 
 function closeModal(modal) {
-  profileEditModal.classList.remove("modal_opened");
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -68,7 +68,7 @@ function getCardElement(cardData) {
   // openModal with previewImageModal
 
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".card__like-button_active");
+    likeButton.classList.toggle("card__like-button_active");
   });
 
   cardTextEl.textContent = cardData.name;
@@ -89,8 +89,8 @@ function handleProfileEditSubmit(e) {
 // Event Listeners
 
 profileEditButton.addEventListener("click", () => {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileDescription.textContent;
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
 });
 
