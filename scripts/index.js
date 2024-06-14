@@ -127,6 +127,7 @@ profileModalCloseButton.addEventListener("click", () =>
 );
 
 cardDeleteButton.addEventListener("click", handleDeleteCard);
+cardElement.remove();
 
 // add new card
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
