@@ -69,6 +69,8 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTextEl = cardElement.querySelector(".card__text");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+
   // find delete button
 
   // add the event listener to the delete button
@@ -84,15 +86,19 @@ function getCardElement(cardData) {
   cardTextEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
+
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   return cardElement;
 }
 
 // Event Handlers
 
-function handleDeleteCard(e) {
-  console.log("click");
-  console.log(e.target);
-}
+// function handleDeleteCard(e) {
+//   cardDeleteButton.addEventListener("click", handleDeleteCard);
+//   cardElement.remove();
+// }
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -126,8 +132,8 @@ profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
 
-cardDeleteButton.addEventListener("click", handleDeleteCard);
-cardElement.remove();
+// cardDeleteButton.addEventListener("click", handleDeleteCard);
+// cardElement.remove();
 
 // add new card
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
