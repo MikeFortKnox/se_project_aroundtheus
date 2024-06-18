@@ -142,7 +142,7 @@ cardItems.forEach((card) => {
 
     // Set the image URL and alt text in the modal
     const cardPreviewImage = cardPreviewModal.querySelector(
-      ".card-preview__image"
+      ".modal-preview__image"
     );
     cardPreviewImage.src = imageUrl;
     cardPreviewImage.alt = imageAlt;

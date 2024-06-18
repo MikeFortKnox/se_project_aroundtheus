@@ -118,3 +118,12 @@
     width: auto;
   }
 }
+
+.modal__preview-image {
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+
+.modal__preview-image:hover {
+  opacity: 1;
+}
