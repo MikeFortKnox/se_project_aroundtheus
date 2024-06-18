@@ -140,12 +140,14 @@ cardItems.forEach((card) => {
     const imageUrl = cardImage.src;
     const imageAlt = cardImage.alt;
 
+    cardPreviewCaption.textContent = data.name;
+    cardPreviewImage.src = data.link;
+    cardPreviewImage.alt = data.name;
+
     // Set the image URL and alt text in the modal
     const cardPreviewImage = cardPreviewModal.querySelector(
       ".modal-preview__image"
     );
-    cardPreviewImage.src = imageUrl;
-    cardPreviewImage.alt = imageAlt;
 
     // Show the modal
     cardPreviewModal.classList.add("modal_opened");
