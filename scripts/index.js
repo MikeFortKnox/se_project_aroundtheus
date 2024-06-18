@@ -83,6 +83,12 @@ function getCardElement(cardData) {
   //cardElement.remove();
 
   // add click listener to the cardImage element
+  cardPreviewModal.addEventListener("click", () => {
+    cardPreviewCaption.textContent = data.name;
+    cardPreviewImage.src = data.link;
+    cardPreviewImage.alt = data.name;
+    openModal(cardPreviewModal);
+  });
   // openModal with previewImageModal
 
   likeButton.addEventListener("click", () => {
@@ -139,18 +145,6 @@ cardItems.forEach((card) => {
     // Get the image URL and alt text from the card
     const imageUrl = cardImage.src;
     const imageAlt = cardImage.alt;
-
-    cardPreviewCaption.textContent = data.name;
-    cardPreviewImage.src = data.link;
-    cardPreviewImage.alt = data.name;
-
-    // Set the image URL and alt text in the modal
-    const cardPreviewImage = cardPreviewModal.querySelector(
-      ".modal-preview__image"
-    );
-
-    // Show the modal
-    cardPreviewModal.classList.add("modal_opened");
   });
 });
 
