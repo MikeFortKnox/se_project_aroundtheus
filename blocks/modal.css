@@ -9,15 +9,16 @@
   color: black;
   display: flex;
   align-items: center;
-  display: none;
-  transition: visibility 0s 0.6s, opacity 0.6s;
+  opacity: 0;
+  transition: visibility 0s 0.6s, opacity 0.6s linear;
+  /* display: none; */
 }
 
 .modal_opened {
   display: flex;
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity 0.6s;
+  transition: visibility 0s, opacity 0.6s linear;
 }
 
 .modal__container {
@@ -124,22 +125,19 @@
 }
 
 .modal__preview-image {
-  opacity: 0;
-  /* transition: opacity 1s linear; */
   position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
 }
 
 .modal__preview-image:hover {
   cursor: pointer;
-  opacity: 1;
-  transition-delay: opacity 1s linear;
-  max-width: 75vw;
-  max-height: 75vh;
+  /* max-width: 75vw;
+  max-height: 75vh; */
 }
 
 .modal__preview-container {
-  max-width: 75vw;
-  max-height: 75vh;
+  margin: auto;
   color: #fff;
-  position: absolute;
+  position: relative;
 }
