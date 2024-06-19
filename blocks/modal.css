@@ -114,6 +114,7 @@
   .modal__heading {
     margin: auto;
     margin-bottom: 50px;
+    font-size: 18px;
   }
 
   .modal__input {

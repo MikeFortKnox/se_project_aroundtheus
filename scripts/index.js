@@ -55,7 +55,7 @@ const cardPreviewModal = document.querySelector("#card-preview-modal");
 const cardPreviewCaption = document.querySelector(
   ".modal__preview-description"
 );
-// console.log(cardPreviewCaption);
+
 const cardPreviewImage = document.querySelector(".modal__preview-image");
 const cardPreviewCloseButton = document.querySelector(
   "#card-preview-close-button"
@@ -90,7 +90,6 @@ function getCardElement(cardData) {
 
   // add click listener to the cardImage element
   cardImageEl.addEventListener("click", () => {
-    // console.log(123);
     cardPreviewCaption.textContent = cardData.name;
     cardPreviewImage.src = cardData.link;
     cardPreviewImage.alt = cardData.name;
@@ -118,7 +117,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal();
+  closeModal(profileEditModal);
 }
 
 function handleAddCardSubmit(e) {
@@ -135,7 +134,6 @@ addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 // Event Listeners
 
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -146,22 +144,10 @@ profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
 
-cardItems.forEach((card) => {
-  const cardImage = card.querySelector(".card__image");
-  cardImage.addEventListener("click", () => {
-    // Get the image URL and alt text from the card
-    const imageUrl = cardImage.src;
-    const imageAlt = cardImage.alt;
-  });
-});
-
 // Add event listener to the close button
 cardPreviewCloseButton.addEventListener("click", () => {
-  cardPreviewModal.classList.remove("modal_opened");
+  closeModal(cardPreviewModal);
 });
-
-// cardDeleteButton.addEventListener("click", handleDeleteCard);
-// cardElement.remove();
 
 // add new card
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
