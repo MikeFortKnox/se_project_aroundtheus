@@ -57,14 +57,29 @@
             maxlength="40"
             required
           />
+          <span class="modal__error" id="profile-title-input-error"
+            >Error message here</span
+          >
           <input
             type="text"
             class="modal__input modal__input-type-description"
             id="profile-description-input"
             name="description"
             placeholder="Explorer"
+            minlength="2"
+            maxlength="200"
+            required
           />
-          <button class="modal__button-save">Save</button>
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
+          <button
+            class="modal__button-save modal__save-button-disabled"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -83,6 +98,9 @@
             name="title"
             placeholder="Title"
           />
+          <span class="modal__error" id="add-card-form-error"
+            >Error message here</span
+          >
           <input
             type="text"
             class="modal__input modal__input-type-url"
@@ -90,6 +108,9 @@
             name="url"
             placeholder="Image URL"
           />
+          <span class="modal__error" id="profile-description-input-error"
+            >Error message here</span
+          >
           <button class="modal__button-save">Save</button>
         </form>
       </div>
