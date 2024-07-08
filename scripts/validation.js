@@ -75,6 +75,12 @@ function enableValidation(options) {
     setEventListeners(formEl, options);
 
     // add error class to input
+    function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+      const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+      inputEl.classList.remove(inputErrorClass);
+      errorMessageEl.textContent = ""; // Reset error message text content
+      errorMessageEl.classList.remove(errorClass);
+    }
     // display error message
     // disable button
     // if all inputs are valid
