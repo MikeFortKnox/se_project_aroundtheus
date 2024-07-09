@@ -57,9 +57,7 @@
             maxlength="40"
             required
           />
-          <span class="modal__error" id="profile-title-input-error"
-            >Error message here</span
-          >
+          <span class="modal__error" id="profile-title-input-error"></span>
           <input
             type="text"
             class="modal__input modal__input-type-description"
@@ -97,20 +95,23 @@
             id="add-card-form"
             name="title"
             placeholder="Title"
+            minlength="1"
+            maxlength="30"
+            required
           />
-          <span class="modal__error" id="add-card-form-error"
-            >Error message here</span
-          >
+          <span class="modal__error" id="add-card-form-error"></span>
           <input
             type="text"
             class="modal__input modal__input-type-url"
             id="profile-description-input"
             name="url"
             placeholder="Image URL"
+            required
           />
-          <span class="modal__error" id="profile-description-input-error"
-            >Error message here</span
-          >
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
           <button class="modal__button-save">Save</button>
         </form>
       </div>
