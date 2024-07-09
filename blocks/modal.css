@@ -154,8 +154,11 @@
 
 .modal__error {
   color: #f00;
-  /* position: absolute; */
-  top: calc(100% + 5px);
+  position: absolute;
+  /* top: calc(100% + 5px); */
   left: 0;
+  bottom: 1px;
+  line-height: 15px;
+  font-size: 12px;
   /* transition: opacity 0.3s; */
 }

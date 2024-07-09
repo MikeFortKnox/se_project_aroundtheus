@@ -68,6 +68,16 @@ const cardPreviewCloseButton = document.querySelector(
 //   console.log(Array.from(event.target.classList).includes("modal"));
 // }
 
+document.addEventListener("click", function (event) {
+  const form = document.querySelector(".modal__form"); // select the form element
+  const target = event.target;
+
+  if (!form.contains(target)) {
+    // close the form
+    closeModal(form);
+  }
+});
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
