@@ -47,33 +47,33 @@
         <button class="modal__close" id="profile-close-button"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
-          <label class="modal__label">
-            <input
-              type="text"
-              class="modal__input modal__input-type-name"
-              id="profile-title-input"
-              name="Name"
-              placeholder="Jacques Cousteau"
-              minlength="2"
-              maxlength="40"
-              required
-            />
-            <span class="modal__error" id="profile-title-input-error"></span>
-            <input
-              type="text"
-              class="modal__input modal__input-type-description"
-              id="profile-description-input"
-              name="description"
-              placeholder="Explorer"
-              minlength="2"
-              maxlength="200"
-              required
-            />
-            <span
-              class="modal__error"
-              id="profile-description-input-error"
-            ></span>
-          </label>
+          <!-- <label class="modal__label"> -->
+          <input
+            type="text"
+            class="modal__input modal__input-type-name"
+            id="profile-title-input"
+            name="Name"
+            placeholder="Jacques Cousteau"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="modal__error" id="profile-title-input-error"></span>
+          <input
+            type="text"
+            class="modal__input modal__input-type-description"
+            id="profile-description-input"
+            name="description"
+            placeholder="Explorer"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
+          <!-- </label> -->
           <button
             class="modal__button-save modal__save-button-disabled"
             disabled
@@ -103,6 +103,8 @@
               required
             />
             <span class="modal__error" id="add-card-form-error"></span>
+          </label>
+          <label class="modal__label">
             <input
               type="url"
               class="modal__input modal__input-type-url"

@@ -63,6 +63,11 @@ const cardPreviewCloseButton = document.querySelector(
 
 // const cardItems = cardListEl.querySelectorAll(".card");
 // Functions
+
+// function closeModal(event) {
+//   console.log(Array.from(event.target.classList).includes("modal"));
+// }
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
