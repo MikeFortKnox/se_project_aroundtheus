@@ -157,3 +157,15 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+// Add event listener to the document to close modals on Escape key press
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key === "Escape" &&
+    (profileEditModal.classList.contains("modal_opened") ||
+      addCardModal.classList.contains("modal_opened"))
+  ) {
+    closeModal(profileEditModal);
+    closeModal(addCardModal);
+  }
+});

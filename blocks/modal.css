@@ -145,12 +145,17 @@
   position: relative;
 }
 
-.modal__error {
+.modal__label {
+  position: relative;
+  color: #f00;
   font-size: 12px;
   line-height: 15px;
-  color: #f00;
+}
+
+.modal__error {
+  /* color: #f00; */
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  transition: opacity 0.3s;
+  /* transition: opacity 0.3s; */
 }
