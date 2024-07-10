@@ -64,10 +64,6 @@ const cardPreviewCloseButton = document.querySelector(
 // const cardItems = cardListEl.querySelectorAll(".card");
 // Functions
 
-// function closeModal(event) {
-//   console.log(Array.from(event.target.classList).includes("modal"));
-// }
-
 document.addEventListener("click", function (event) {
   const form = document.querySelector(".modal__form"); // select the form element
   const target = event.target;
@@ -84,6 +80,18 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  function closeModal(event) {
+    const modalContainer = document.querySelector(".modal__container");
+    const target = event.target;
+    if (
+      target === document.querySelector(".modal") ||
+      target.parentNode === document.querySelector(".modal")
+    ) {
+      document.querySelector(".modal").classList.remove("modal_opened");
+    }
+  }
+
+  document.addEventListener("click", closeModal);
 }
 
 function renderCard(cardData, wrapper) {
