@@ -32,17 +32,20 @@ function hasInvalidInput(inputList) {
 }
 
 // disableButton
+function disableSaveButton(button, isValid) {
+  if (!isValid) {
+    button.classList.add("inactive-button");
+    button.disabled = true;
+  } else {
+    button.classList.remove("inactive-button");
+    button.disabled = false;
+  }
+}
 
 // enableButton
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   const foundInvalid = false;
-
-  // inputEls.forEach((inputEl) => {
-  //   if (!inputEl.validity.valid) {
-  //     foundInvalid = true;
-  //   }
-  // });
 
   if (hasInvalidInput(inputEls)) {
     submitButton.classList.add(inactiveButtonClass);

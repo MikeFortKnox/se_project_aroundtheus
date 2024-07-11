@@ -162,3 +162,9 @@
   font-size: 12px;
   /* transition: opacity 0.3s; */
 }
+
+.modal__save-button-disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
