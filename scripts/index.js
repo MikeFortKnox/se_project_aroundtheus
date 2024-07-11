@@ -76,23 +76,32 @@ document.addEventListener("click", function (event) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  // Add event listener to the document to close modals on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("modal_opened")) {
+      closeModal(profileEditModal);
+      closeModal(addCardModal);
+      closeModal(cardPreviewModal);
+    }
+  });
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  function closeModal(event) {
-    const modalContainer = document.querySelector(".modal__container");
-    const target = event.target;
-    if (
-      target === document.querySelector(".modal") ||
-      target.parentNode === document.querySelector(".modal")
-    ) {
-      document.querySelector(".modal").classList.remove("modal_opened");
-    }
-  }
-
-  document.addEventListener("click", closeModal);
 }
+
+function handleModalCloseClick(event) {
+  const modalContainer = document.querySelector(".modal__container");
+  const target = event.target;
+  if (
+    target.classList.contains("modal") ||
+    target.classList.contains("modal__close")
+  ) {
+    closeModal(target.closest(".modal"));
+  }
+}
+
+document.addEventListener("click", handleModalCloseClick);
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -180,15 +189,3 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-// Add event listener to the document to close modals on Escape key press
-document.addEventListener("keydown", (e) => {
-  if (
-    e.key === "Escape" &&
-    (profileEditModal.classList.contains("modal_opened") ||
-      addCardModal.classList.contains("modal_opened"))
-  ) {
-    closeModal(profileEditModal);
-    closeModal(addCardModal);
-  }
-});
