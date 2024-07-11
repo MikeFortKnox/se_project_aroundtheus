@@ -64,21 +64,30 @@ const cardPreviewCloseButton = document.querySelector(
 // const cardItems = cardListEl.querySelectorAll(".card");
 // Functions
 
-document.addEventListener("click", function (event) {
-  const form = document.querySelector(".modal__form"); // select the form element
-  const target = event.target;
+// document.addEventListener("click", function (event) {
+//   const form = document.querySelector(".modal__form"); // select the form element
+//   const target = event.target;
 
-  if (!form.contains(target)) {
-    // close the form
-    closeModal(form);
-  }
-});
+//   if (!form.contains(target)) {
+//     // close the form
+//     closeModal(form);
+//   }
+// });
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   // Add event listener to the document to close modals on Escape key press
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("modal_opened")) {
+    if (e.key === "Escape") {
+      // you need to update the closeModal functionality to make it universal
+      closeModal(modal);
+      // closeModal(addCardModal);
+      // closeModal(cardPreviewModal);
+    }
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target.classList.contains("modal_opened")) {
       closeModal(profileEditModal);
       closeModal(addCardModal);
       closeModal(cardPreviewModal);
@@ -91,7 +100,6 @@ function closeModal(modal) {
 }
 
 function handleModalCloseClick(event) {
-  const modalContainer = document.querySelector(".modal__container");
   const target = event.target;
   if (
     target.classList.contains("modal") ||
@@ -173,9 +181,9 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
+// profileModalCloseButton.addEventListener("click", () =>
+//   closeModal(profileEditModal)
+// );
 
 // Add event listener to the close button
 cardPreviewCloseButton.addEventListener("click", () => {

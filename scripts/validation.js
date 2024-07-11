@@ -82,12 +82,12 @@ function enableValidation(options) {
     // disable button
     // if all inputs are valid
     // enable button
-    function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
-      const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-      inputEl.classList.remove(inputErrorClass);
-      errorMessageEl.textContent = ""; // Reset error message text
-      errorMessageEl.classList.remove(errorClass);
-    }
+    // function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+    //   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+    //   inputEl.classList.remove(inputErrorClass);
+    //   errorMessageEl.textContent = ""; // Reset error message text
+    //   errorMessageEl.classList.remove(errorClass);
+    // }
   });
 }
 
