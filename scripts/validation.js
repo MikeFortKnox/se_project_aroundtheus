@@ -33,10 +33,10 @@ function hasInvalidInput(inputList) {
 
 function disableSaveButton(button, isValid) {
   if (!isValid) {
-    button.classList.add("inactive-button");
+    button.classList.add(inactiveButtonClass);
     button.disabled = true;
   } else {
-    button.classList.remove("inactive-button");
+    button.classList.remove(inactiveButtonClass);
     button.disabled = false;
   }
 }
@@ -80,7 +80,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button-save",
-  inactiveButtonClass: "modal__save-button-disabled",
+  inactiveButtonClass: "modal__button-save_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };

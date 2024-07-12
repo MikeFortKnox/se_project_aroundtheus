@@ -160,7 +160,7 @@
   /* transition: opacity 0.3s; */
 }
 
-.modal__save-button-disabled {
+.modal__button-save_disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

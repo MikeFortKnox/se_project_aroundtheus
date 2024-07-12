@@ -86,7 +86,7 @@ function handleCloseEsc(e) {
 
 document.addEventListener("keydown", handleCloseEsc);
 
-document.removeEventListener("keydown", handleCloseEsc);
+// document.removeEventListener("keydown", handleCloseEsc);
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -173,13 +173,12 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-cardPreviewCloseButton.addEventListener("click", () => {
-  closeModal(cardPreviewModal);
-});
+// cardPreviewCloseButton.addEventListener("click", () => {
+// closeModal(cardPreviewModal);
+// });
 
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
+// addCardModalCloseButton.addEventListener("click", () =>
+closeModal(addCardModal);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
