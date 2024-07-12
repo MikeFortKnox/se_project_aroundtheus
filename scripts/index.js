@@ -81,8 +81,6 @@ function openModal(modal) {
     if (e.key === "Escape") {
       // you need to update the closeModal functionality to make it universal
       closeModal(modal);
-      // closeModal(addCardModal);
-      // closeModal(cardPreviewModal);
     }
   });
 
@@ -94,6 +92,17 @@ function openModal(modal) {
     }
   });
 }
+
+function handleCloseEsc(e) {
+  if (e.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+}
+
+document.addEventListener("keydown", handleCloseEsc);
+
+document.removeEventListener("keydown", handleCloseEsc);
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
