@@ -61,34 +61,18 @@ const cardPreviewCloseButton = document.querySelector(
   "#card-preview-close-button"
 );
 
-// const cardItems = cardListEl.querySelectorAll(".card");
-// Functions
-
-// document.addEventListener("click", function (event) {
-//   const form = document.querySelector(".modal__form"); // select the form element
-//   const target = event.target;
-
-//   if (!form.contains(target)) {
-//     // close the form
-//     closeModal(form);
-//   }
-// });
-
 function openModal(modal) {
   modal.classList.add("modal_opened");
   // Add event listener to the document to close modals on Escape key press
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      // you need to update the closeModal functionality to make it universal
       closeModal(modal);
     }
   });
 
   modal.addEventListener("click", (event) => {
     if (event.target.classList.contains("modal_opened")) {
-      closeModal(profileEditModal);
-      closeModal(addCardModal);
-      closeModal(cardPreviewModal);
+      closeModal(modal);
     }
   });
 }
@@ -135,7 +119,6 @@ function getCardElement(cardData) {
   // find delete button
 
   // add the event listener to the delete button
-  //cardElement.remove();
 
   // add click listener to the cardImage element
   cardImageEl.addEventListener("click", () => {
@@ -190,16 +173,10 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-// profileModalCloseButton.addEventListener("click", () =>
-//   closeModal(profileEditModal)
-// );
-
-// Add event listener to the close button
 cardPreviewCloseButton.addEventListener("click", () => {
   closeModal(cardPreviewModal);
 });
 
-// add new card
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
   closeModal(addCardModal)

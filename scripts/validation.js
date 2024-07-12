@@ -31,7 +31,6 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-// disableButton
 function disableSaveButton(button, isValid) {
   if (!isValid) {
     button.classList.add("inactive-button");
@@ -41,8 +40,6 @@ function disableSaveButton(button, isValid) {
     button.disabled = false;
   }
 }
-
-// enableButton
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   const foundInvalid = false;
@@ -59,7 +56,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(".modal__button-save");
+  const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -76,18 +73,6 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-
-    // add error class to input
-    // display error message
-    // disable button
-    // if all inputs are valid
-    // enable button
-    // function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
-    //   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-    //   inputEl.classList.remove(inputErrorClass);
-    //   errorMessageEl.textContent = ""; // Reset error message text
-    //   errorMessageEl.classList.remove(errorClass);
-    // }
   });
 }
 
