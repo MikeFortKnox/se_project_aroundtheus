@@ -87,7 +87,7 @@ function handleCloseEsc(e) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleCloseEsc);
-  document.addEventListener("click", handleModalCloseClick);
+  document.removeEventListener("click", handleModalCloseClick);
 }
 
 function handleModalCloseClick(event) {
@@ -177,6 +177,6 @@ profileEditButton.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 // addCardModalCloseButton.addEventListener("click", () =>
-closeModal(addCardModal);
+// closeModal(addCardModal);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
