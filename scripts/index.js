@@ -70,11 +70,7 @@ function openModal(modal) {
     }
   });
 
-  modal.addEventListener("click", (event) => {
-    if (event.target.classList.contains("modal_opened")) {
-      closeModal(modal);
-    }
-  });
+  modal.addEventListener("click", handleModalCloseClick);
 }
 
 function handleCloseEsc(e) {
@@ -84,12 +80,14 @@ function handleCloseEsc(e) {
   }
 }
 
-document.addEventListener("keydown", handleCloseEsc);
+// document.addEventListener("keydown", handleCloseEsc);
 
 // document.removeEventListener("keydown", handleCloseEsc);
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleCloseEsc);
+  document.addEventListener("click", handleModalCloseClick);
 }
 
 function handleModalCloseClick(event) {
@@ -102,7 +100,7 @@ function handleModalCloseClick(event) {
   }
 }
 
-document.addEventListener("click", handleModalCloseClick);
+// document.addEventListener("click", handleModalCloseClick);
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
