@@ -64,21 +64,16 @@ const cardPreviewCloseButton = document.querySelector(
 function openModal(modal) {
   modal.classList.add("modal_opened");
   // Add event listener to the document to close modals on Escape key press
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal(modal);
-    }
-  });
+  document.addEventListener("keydown", handleCloseEsc(modal));
 
   modal.addEventListener("click", handleModalCloseClick);
 }
 
-function handleCloseEsc(e) {
-  if (e.key === "Escape") {
-    const activeModal = document.querySelector(".modal_opened");
-    closeModal(activeModal);
+const handleCloseEsc = (modal) => (event) => {
+  if (event.key === "Escape") {
+    closeModal(modal);
   }
-}
+};
 
 function handleEscKey(e) {
   if (e.key == "Escape") {
