@@ -74,11 +74,11 @@ function handleEscKey(e) {
   }
 }
 
-const handleCloseEsc = (modal) => (event) => {
-  if (event.key === "Escape") {
-    closeModal(modal);
-  }
-};
+// const handleCloseEsc = (modal) => (event) => {
+//   if (event.key === "Escape") {
+//     closeModal(modal);
+//   }
+// };
 
 // document.addEventListener("keydown", handleCloseEsc);
 
@@ -86,8 +86,8 @@ const handleCloseEsc = (modal) => (event) => {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleCloseEsc);
-  document.removeEventListener("click", handleModalCloseClick);
+  document.removeEventListener("keydown", handleEscKey);
+  modal.removeEventListener("click", handleModalCloseClick);
 }
 
 function handleModalCloseClick(event) {
