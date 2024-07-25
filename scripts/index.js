@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -195,8 +196,7 @@ const addCardValidator = new FormValidator();
 
 
 */
-const editFormValidator = new FormValidator(settings, editForm);
-const addFormValidator = new FormValidator(settings, addForm);
+
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -205,3 +205,9 @@ const settings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+
+const editForm = document.querySelector(".edit-form");
+const addForm = document.querySelector(".add-form");
+
+const editFormValidator = new FormValidator(settings, editForm);
+const addFormValidator = new FormValidator(settings, addForm);
