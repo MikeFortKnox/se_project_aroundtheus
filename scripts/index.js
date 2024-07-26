@@ -206,8 +206,11 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editForm = document.querySelector(".edit-form");
-const addForm = document.querySelector(".add-form");
+const editForm = document.querySelector("#edit-form");
+const addForm = document.querySelector("#add-form");
 
 const editFormValidator = new FormValidator(settings, editForm);
 const addFormValidator = new FormValidator(settings, addForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
