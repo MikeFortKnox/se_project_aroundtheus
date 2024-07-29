@@ -21,7 +21,9 @@ export default class Card {
       });
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", () => this._handlePreviewPicture(this));
+      .addEventListener("click", () =>
+        this._handlePreviewPicture({ name: this._name, link: this._link })
+      );
   }
 
   _handleDeleteCard() {
