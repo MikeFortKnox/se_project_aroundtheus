@@ -19,11 +19,9 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () =>
-        this._handlePreviewPicture({ name: this._name, link: this._link })
-      );
+    this._cardImage.addEventListener("click", () =>
+      this._handlePreviewPicture({ name: this._name, link: this._link })
+    );
   }
 
   _handleDeleteCard() {
@@ -45,13 +43,11 @@ export default class Card {
   }
 
   getView() {
-    this._cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
+    this._cardElement = this._getTemplate();
     // get the card view
     // set event listeners
     // get elements inside card
+
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardName = this._cardElement.querySelector(".card__text");
 

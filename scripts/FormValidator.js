@@ -8,7 +8,6 @@ export default class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
-    this._inputList = Array.from(formEl.querySelectorAll("input"));
   }
 
   _showInputError(inputEl) {
@@ -42,7 +41,7 @@ export default class FormValidator {
   // }
 
   _hasInvalidInput() {
-    return this._inputList.some((inputEl) => {
+    return this._inputEls.some((inputEl) => {
       return !inputEl.validity.valid;
     });
   }
@@ -73,14 +72,14 @@ export default class FormValidator {
   }
 }
 
-const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button-save",
-  inactiveButtonClass: "modal__button-save_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
+// const settings = {
+//   formSelector: ".modal__form",
+//   inputSelector: ".modal__input",
+//   submitButtonSelector: ".modal__button-save",
+//   inactiveButtonClass: "modal__button-save_disabled",
+//   inputErrorClass: "modal__input_type_error",
+//   errorClass: "modal__error_visible",
+// };
 
 // const editFormValidator = new FormValidator(settings, editForm);
 // const addFormValidator = new FormValidator(settings, addForm);

@@ -105,9 +105,19 @@ function handleModalCloseClick(event) {
 
 // document.addEventListener("click", handleModalCloseClick);
 
-function renderCard(cardData, wrapper) {
+function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleCardPreview);
-  wrapper.prepend(cardElement.getView());
+  return cardElement.getView();
+}
+
+// function renderCard(cardData, wrapper) {
+//   const cardElement = new Card(cardData, "#card-template", handleCardPreview);
+//   wrapper.prepend(cardElement.getView());
+// }
+
+function renderCard(cardData, wrapper) {
+  const cardElement = createCard(cardData);
+  wrapper.prepend(cardElement);
 }
 
 function handleCardPreview(cardData) {
@@ -206,11 +216,11 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editForm = document.querySelector("#edit-form");
-const addForm = document.querySelector("#add-form");
+// const editForm = document.querySelector("#edit-form");
+// const addForm = document.querySelector("#add-form");
 
-const editFormValidator = new FormValidator(settings, editForm);
-const addFormValidator = new FormValidator(settings, addForm);
+const editFormValidator = new FormValidator(settings, profileEditForm);
+const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
