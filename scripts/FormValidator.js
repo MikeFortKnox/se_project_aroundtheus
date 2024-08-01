@@ -24,16 +24,20 @@ export default class FormValidator {
     errorMessageEl.textContent = "";
   }
 
-  _toggleButtonState(inputEls, submitButton) {
+  _toggleButtonState() {
     const foundInvalid = false;
 
-    if (this._hasInvalidInput(inputEls)) {
-      submitButton.classList.add(this._inactiveButtonClass);
-      submitButton.disabled = true;
+    if (this._hasInvalidInput(this._inputEls)) {
+      this._disableButton();
       return;
     }
-    submitButton.classList.remove(this._inactiveButtonClass);
-    submitButton.disabled = false;
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
+  }
+
+  _disableButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
   // _hasInvalidInput() {
@@ -59,9 +63,19 @@ export default class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(inputEl);
-        this._toggleButtonState(this._inputEls, this._submitButton);
+        this._toggleButtonState();
       });
     });
+  }
+
+  resetValidation() {
+    this._inputEls.forEach((inputEl) => {
+      this._hideInputError(inputEl);
+    });
+    this._disableButton();
+    //remove all error messages
+    // remove all error classes
+    // set submit button to disabled using this._toggleButtonState
   }
 
   enableValidation() {

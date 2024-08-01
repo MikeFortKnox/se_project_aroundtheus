@@ -177,6 +177,7 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardFormElement.reset();
+  addFormValidator.resetValidation();
 }
 
 // Form Listeners
@@ -224,3 +225,4 @@ const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+addFormValidator.resetValidation();
