@@ -17,7 +17,7 @@ module.exports = {
   stats: "errors-only",
   mode: "development",
   devServer: {
-    static: path.resolve(__dirname, "./dist"),
+    static: path.resolve(__dirname, "dist"),
     compress: true,
     port: 8080,
     open: true,
@@ -38,26 +38,12 @@ module.exports = {
           {
             loader: "css-loader",
           },
+          "postcss-loader",
         ],
       },
       {
-        // add the rule for processing files
         test: /\.(png|svg|jpg|jpeg|gif|woff(2)?|eot|ttf|otf)$/,
         type: "asset/resource",
-      },
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
-        exclude: "/node_modules/",
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          },
-        ],
       },
     ],
   },
