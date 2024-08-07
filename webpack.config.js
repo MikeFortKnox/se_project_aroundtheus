@@ -1,6 +1,7 @@
-const path = require("path"); // connect path to webpack config
+const path = require("path");
 
 module.exports = {
+  devtool: "inline-source-map",
   entry: {
     main: "./src/index.js",
   },
@@ -9,5 +10,32 @@ module.exports = {
     filename: "main.js",
     publicPath: "",
   },
-  mode: "development", // add development mode here like this
+  mode: "development",
+  stats: "errors-only",
+  devServer: {
+    static: path.resolve(__dirname, "./dist"),
+    compress: true,
+    port: 8080,
+    open: true,
+    liveReload: true,
+    hot: false,
+  },
+};
+
+module.exports = {
+  // ... existing code
+  module: {
+    rules: [
+      // this is an array of rules
+      // add an object containing rules for Babel to it
+      {
+        // a regular expression that searches for all js files
+        test: /\.js$/,
+        // all files must be processed by babel-loader
+        loader: "babel-loader",
+        // exclude the node_modules folder, we don't need to process files in it
+        exclude: "/node_modules/",
+      },
+    ],
+  },
 };
