@@ -38,7 +38,7 @@
 }
 
 .page__image_achievements {
-  background-image: url(../images/achievements.svg);
+  background-image: url(./images/achievements.svg);
   height: 444px;
   background-size: cover;
   background-repeat: no-repeat;
