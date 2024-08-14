@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 const initialCards = [
   {
@@ -64,6 +65,13 @@ const cardPreviewImage = document.querySelector(".modal__preview-image");
 //   "#card-preview-close-button"
 // );
 
+// create instance of PopupWithImage
+// call its setEventListeners method
+function popupWithImage(title, link) {
+  const imageTitle = title;
+  const imageLink = link;
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscKey);
@@ -87,21 +95,21 @@ function handleEscKey(e) {
 
 // document.removeEventListener("keydown", handleCloseEsc);
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscKey);
-  modal.removeEventListener("click", handleModalCloseClick);
-}
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
+//   document.removeEventListener("keydown", handleEscKey);
+//   modal.removeEventListener("click", handleModalCloseClick);
+// }
 
-function handleModalCloseClick(event) {
-  const target = event.target;
-  if (
-    target.classList.contains("modal") ||
-    target.classList.contains("modal__close")
-  ) {
-    closeModal(target.closest(".modal"));
-  }
-}
+// function handleModalCloseClick(event) {
+//   const target = event.target;
+//    if (
+//      target.classList.contains("modal") ||
+//      target.classList.contains("modal__close")
+//    ) {
+//     closeModal(target.closest(".modal"));
+//    }
+// }
 
 // document.addEventListener("click", handleModalCloseClick);
 
@@ -120,11 +128,21 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
+const previewImagePopup = new PopupWithImage({
+  popupSelector: "#card-preview-modal",
+});
+
+previewImagePopup.setEventListeners();
+
 function handleCardPreview(cardData) {
-  cardPreviewCaption.textContent = cardData.name;
-  cardPreviewImage.src = cardData.link;
-  cardPreviewImage.alt = cardData.name;
-  openModal(cardPreviewModal);
+  // cardPreviewCaption.textContent = cardData.name;
+  // cardPreviewImage.src = cardData.link;
+  // cardPreviewImage.alt = cardData.name;
+  // openModal(cardPreviewModal);
+  // call the open method
+  previewImagePopup.open(cardData);
+  // const popup = new PopupWithImage(title, link);
+  // popup.open();
 }
 
 // function getCardElement(cardData) {
@@ -196,7 +214,10 @@ profileEditButton.addEventListener("click", () => {
 // closeModal(cardPreviewModal);
 // });
 
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+addNewCardButton.addEventListener("click", () => {
+  // open modal with .open()
+  //openModal(addCardModal);
+});
 // addCardModalCloseButton.addEventListener("click", () =>
 // closeModal(addCardModal);
 
@@ -226,3 +247,5 @@ const addFormValidator = new FormValidator(settings, addCardFormElement);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 addFormValidator.resetValidation();
+
+export { PopupWithImage };
