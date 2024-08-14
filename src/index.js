@@ -139,6 +139,10 @@ previewImagePopup.setEventListeners();
 const editProfilePopup = new PopupWithForm("#edit-modal", () => {});
 editProfilePopup.setEventListeners();
 
+const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
+  // Handle form submission for add card modal
+});
+
 function handleCardPreview(cardData) {
   // cardPreviewCaption.textContent = cardData.name;
   // cardPreviewImage.src = cardData.link;
@@ -221,6 +225,8 @@ profileEditButton.addEventListener("click", () => {
 // });
 
 addNewCardButton.addEventListener("click", () => {
+  addCardPopup(addCardModal);
+  addNewCardButton.open();
   // open modal with .open()
   //openModal(addCardModal);
 });
