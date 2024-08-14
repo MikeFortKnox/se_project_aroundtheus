@@ -2,6 +2,7 @@ import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import "./pages/index.css";
 
 const initialCards = [
   {
