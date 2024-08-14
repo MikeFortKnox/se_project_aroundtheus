@@ -140,7 +140,13 @@ const editProfilePopup = new PopupWithForm("#edit-modal", () => {});
 editProfilePopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
-  // Handle form submission for add card modal
+  const newCard = {
+    name: data.title,
+    link: data.url,
+  };
+  renderCard(newCard, cardListEl);
+  addCardFormElement.reset();
+  addFormValidator.resetValidation();
 });
 
 function handleCardPreview(cardData) {
@@ -225,8 +231,7 @@ profileEditButton.addEventListener("click", () => {
 // });
 
 addNewCardButton.addEventListener("click", () => {
-  addCardPopup(addCardModal);
-  addNewCardButton.open();
+  addCardPopup.open();
   // open modal with .open()
   //openModal(addCardModal);
 });
