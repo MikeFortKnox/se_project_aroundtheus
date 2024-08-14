@@ -1,6 +1,7 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import PopupWithImage from "./PopupWithImage.js";
+import Card from "../src/Card.js";
+import FormValidator from "../src/FormValidator.js";
+import PopupWithImage from "../src/PopupWithImage.js";
+import PopupWithForm from "../src/PopupWithForm.js";
 
 const initialCards = [
   {
@@ -72,11 +73,11 @@ function popupWithImage(title, link) {
   const imageLink = link;
 }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscKey);
-  modal.addEventListener("click", handleModalCloseClick);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscKey);
+//   //modal.addEventListener("click", handleModalCloseClick);
+// }
 
 function handleEscKey(e) {
   if (e.key == "Escape") {
@@ -103,12 +104,12 @@ function handleEscKey(e) {
 
 // function handleModalCloseClick(event) {
 //   const target = event.target;
-//    if (
-//      target.classList.contains("modal") ||
-//      target.classList.contains("modal__close")
-//    ) {
+//   if (
+//     target.classList.contains("modal") ||
+//     target.classList.contains("modal__close")
+//   ) {
 //     closeModal(target.closest(".modal"));
-//    }
+//   }
 // }
 
 // document.addEventListener("click", handleModalCloseClick);
@@ -133,6 +134,9 @@ const previewImagePopup = new PopupWithImage({
 });
 
 previewImagePopup.setEventListeners();
+
+const editProfilePopup = new PopupWithForm("#edit-modal", () => {});
+editProfilePopup.setEventListeners();
 
 function handleCardPreview(cardData) {
   // cardPreviewCaption.textContent = cardData.name;
@@ -207,7 +211,8 @@ addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  editProfilePopup.open();
+  // openModal(profileEditModal);
 });
 
 // cardPreviewCloseButton.addEventListener("click", () => {
