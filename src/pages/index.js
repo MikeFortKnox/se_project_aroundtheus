@@ -1,8 +1,8 @@
-import Card from "../../Components/Card.js";
-import FormValidator from "../../Components/FormValidator.js";
-import PopupWithImage from "../../Components/PopupWithImage.js";
-import PopupWithForm from "../../Components/PopupWithForm.js";
-import "./pages/index.css";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import "./index.css";
 
 const initialCards = [
   {
@@ -55,7 +55,7 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 // const cardTitleInput = addCardFormElement.querySelector(
 //   ".modal__input-type-title"
 // );
-const cardUrlInput = addCardFormElement.querySelector(".modal__input-type-url");
+// const cardUrlInput = addCardFormElement.querySelector(".modal__input-type-url");
 // const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 // const cardPreviewModal = document.querySelector("#card-preview-modal");
 // const cardPreviewCaption = document.querySelector(
