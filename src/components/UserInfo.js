@@ -7,6 +7,7 @@ export default class UserInfo {
     );
   }
 
+  // use when opening profile edit modal
   getUserInfo() {
     const userInfo = {};
     userInfo.name =
@@ -17,6 +18,7 @@ export default class UserInfo {
     return userInfo;
   }
 
+  // use when submitting the submitting edit modal
   setUserInfo(userInfo) {
     this._nameInfo.textContent = userInfo.name;
     this._descriptionInfo.textContent = userInfo.description;

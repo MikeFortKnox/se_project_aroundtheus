@@ -3,6 +3,8 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import "./index.css";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
 
 const initialCards = [
   {
@@ -143,8 +145,8 @@ const editProfilePopup = new PopupWithForm(
 editProfilePopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
-  console.log(132123);
-  console.log(data);
+  // console.log(132123);
+  // console.log(data);
   const newCard = {
     name: data.title,
     link: data.url,
@@ -157,6 +159,18 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
 //setEventListener
 
 addCardPopup.setEventListeners();
+
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      cardList.addItem(createCard(data));
+    },
+  },
+  ".cards__list"
+);
+
+const userInfo = new UserInfo(".profile__info");
 
 function handleCardPreview(cardData) {
   // cardPreviewCaption.textContent = cardData.name;
