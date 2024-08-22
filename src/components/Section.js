@@ -14,13 +14,14 @@ export default class Section {
   // call on page load
   renderItems() {
     this.items.forEach((item) => {
-      const element = this.renderer(item);
-      this.container.append(element);
+      this.renderer(item);
+      // const element = this.renderer(item);
+      // this.container.append(element);
     });
   }
 
   // call when creating a new card
   addItem(element) {
-    this.container.append(element);
+    this.container.prepend(element);
   }
 }
