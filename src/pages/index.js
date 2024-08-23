@@ -49,6 +49,10 @@ const userInfo = new UserInfo({
   descriptionSelector: ".profile__description",
 });
 
+const currentUserInfo = userInfo.getUserInfo();
+profileTitleInput.value = currentUserInfo.name;
+profileDescriptionInput.value = currentUserInfo.description;
+
 const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addCardFormElement);
 
