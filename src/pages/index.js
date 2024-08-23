@@ -85,15 +85,15 @@ function handleCardPreview(cardData) {
 // Event Handlers
 
 function handleProfileEditSubmit({ name, description }) {
-  profileTitle.textContent = name;
-  profileDescription.textContent = description;
+  userInfo.setUserInfo({ name, description });
 }
 
 // Event Listeners
 
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.name;
+  profileDescriptionInput.value = userData.description;
   editProfilePopup.open();
 });
 
