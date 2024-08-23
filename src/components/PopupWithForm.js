@@ -10,9 +10,9 @@ export default class PopupWithForm extends Popup {
     // this._formElement = this._popupElement.querySelector(".modal__form");
   }
 
-  close() {
-    super.close();
-  }
+  // close() {
+  //   super.close();
+  // }
 
   _getInputValues(element) {
     const data = new FormData(element);

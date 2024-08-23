@@ -18,7 +18,7 @@ import {
   addCardFormElement,
   addNewCardButton,
   settings,
-} from "../../utils/constants.js";
+} from "../utils/constants.js";
 
 const previewImagePopup = new PopupWithImage({
   popupSelector: "#card-preview-modal",
