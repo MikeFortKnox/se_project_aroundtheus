@@ -31,7 +31,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   const newCard = createCard(cardData);
   cardList.addItem(newCard);
   addCardFormElement.reset();
-  addFormValidator._disableButton();
+  addFormValidator.disableButton();
 });
 
 const cardList = new Section(
