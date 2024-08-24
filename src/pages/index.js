@@ -49,21 +49,12 @@ const userInfo = new UserInfo({
   descriptionSelector: ".profile__description",
 });
 
-const currentUserInfo = userInfo.getUserInfo();
-profileTitleInput.value = currentUserInfo.name;
-profileDescriptionInput.value = currentUserInfo.description;
-
 const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", handleCardPreview);
   return cardElement.getView();
-}
-
-function renderCard(cardData, wrapper) {
-  const cardElement = createCard(cardData);
-  wrapper.prepend(cardElement);
 }
 
 previewImagePopup.setEventListeners();
