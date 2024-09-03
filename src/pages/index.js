@@ -6,7 +6,7 @@ import "./index.css";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import {
-  initialCards,
+  // initialCards,
   profileEditModal,
   profileEditButton,
   addCardModal,
@@ -19,24 +19,42 @@ import {
   addNewCardButton,
   settings,
 } from "../utils/constants.js";
+import Api from "../components/API.js";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "50644799-43da-42c8-ae19-a67fa2a948b2",
+    "Content-Type": "application/json",
+  },
+});
 
 const previewImagePopup = new PopupWithImage({
   popupSelector: "#card-preview-modal",
 });
+
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   const cardData = {
     name: data.title,
     link: data.url,
   };
-  const newCard = createCard(cardData);
-  cardList.addItem(newCard);
-  addCardFormElement.reset();
-  addFormValidator.disableButton();
+  api
+    .addCards(cardData)
+    .then((res) => {
+      const card = createCard(res);
+      section.addItem(card);
+      addCardFormElement.reset();
+      addFormValidator.resetValidation();
+      addCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(`Error, could not add card: ${err}`);
+    });
 });
 
 const cardList = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: (data) => {
       cardList.addItem(createCard(data));
     },
@@ -52,8 +70,45 @@ const userInfo = new UserInfo({
 const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addCardFormElement);
 
+function handleLikeClick(data) {
+  api
+    .likeACard(data._id)
+    .then((res) => {
+      console.log("0000");
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  api
+    .dislikeACard(data._id)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function handleDeleteClick() {
+  api
+    .handleDeleteCard()
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 function createCard(cardData) {
-  const cardElement = new Card(cardData, "#card-template", handleCardPreview);
+  const cardElement = new Card(
+    cardData,
+    "#card-template",
+    handleCardPreview,
+    handleLikeClick,
+    handleDeleteClick
+  );
   return cardElement.getView();
 }
 
@@ -75,8 +130,18 @@ function handleCardPreview(cardData) {
 
 // Event Handlers
 
-function handleProfileEditSubmit({ name, description }) {
-  userInfo.setUserInfo({ name, description });
+function handleProfileEditSubmit(userData) {
+  const { name, description } = userData;
+  api.updateUserProfile({ name, about: description }).then((updateUserData) => {
+    console.log(updateUserData);
+    userInfo.setUserInfo({
+      name: updateUserData.name,
+      description: updateUserData.about,
+    });
+    profileEditModal.close();
+  });
+
+  // userInfo.setUserInfo({ name, description });
 }
 
 // Event Listeners
@@ -95,4 +160,25 @@ addNewCardButton.addEventListener("click", () => {
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-export { PopupWithImage };
+api.getInitialCards().then((res) => {
+  console.log(res);
+  cardList.addItem(createCard(res[0]));
+});
+
+// api
+//   .likeACard(cardId)
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// api
+//   .dislikeACard(cardId)
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });

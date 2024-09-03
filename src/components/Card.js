@@ -1,9 +1,20 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handlePreviewPicture) {
-    this._name = name;
-    this._link = link;
+  // pass like and delete handlers from index.js
+  constructor(
+    data,
+    cardSelector,
+    handlePreviewPicture,
+    handleLikeClick,
+    handleDeleteClick
+  ) {
+    this._name = data.name;
+    this._link = data.link;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handlePreviewPicture = handlePreviewPicture;
+    // assign the handlers to the this object
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
@@ -11,6 +22,8 @@ export default class Card {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
+        // call the function that was passed from index.js
+        // pass appropriate arg(s) -- this object would work
         this._handleLikeIcon();
       });
     // ".card__delete-button"
@@ -36,7 +49,12 @@ export default class Card {
       .cloneNode(true);
   }
 
+  // private method becomes public
+  // for use in handler .then()
   _handleLikeIcon() {
+    // api code goes in the handler in index.js
+    this._handleLikeClick(this);
+
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
@@ -44,9 +62,6 @@ export default class Card {
 
   getView() {
     this._cardElement = this._getTemplate();
-    // get the card view
-    // set event listeners
-    // get elements inside card
 
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardName = this._cardElement.querySelector(".card__text");
@@ -56,7 +71,6 @@ export default class Card {
     this._cardName.textContent = this._name;
 
     this._setEventListeners();
-    // return the card
     return this._cardElement;
   }
 }
