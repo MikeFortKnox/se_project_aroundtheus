@@ -93,15 +93,29 @@ function handleLikeClick(data) {
   }
 }
 
-function handleDeleteClick() {
-  api
-    .handleDeleteCard()
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+// function handleDeleteClick() {
+//   api
+//     .handleDeleteCard()
+//     .then((res) => {
+//       console.log(res);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// }
+
+function handleDeleteClick(card) {
+  confirmDeleteModal.setSubmitFunction(() => {
+    api
+      .handleDeleteCard(card._id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+  confirmDeleteModal.open();
 }
 
 function createCard(cardData) {

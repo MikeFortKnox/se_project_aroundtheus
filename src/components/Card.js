@@ -39,8 +39,14 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    api
+      .handleDeleteCard()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   _getTemplate() {
