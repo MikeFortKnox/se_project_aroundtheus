@@ -41,6 +41,7 @@ export const profileDescriptionInput = profileEditModal.querySelector(
 export const profileEditForm = profileEditModal.querySelector(".modal__form");
 export const addCardFormElement = addCardModal.querySelector(".modal__form");
 export const addNewCardButton = document.querySelector(".profile__add-button");
+export const deleteModal = document.querySelector("#delete-modal");
 
 export const settings = {
   formSelector: ".modal__form",

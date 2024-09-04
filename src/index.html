@@ -145,6 +145,26 @@
       </div>
     </div>
 
+    <!-- card delete modal -->
+
+    <div class="modal" id="delete-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="delete-card-modal"
+          type="button"
+        ></button>
+        <form
+          class="modal__form modal__form_delete"
+          id="delete-form-modal"
+          name="delete-form-submit"
+        >
+          <h2 class="modal__heading">Are you sure?</h2>
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <button class="card__delete-button" type="button"></button>

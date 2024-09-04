@@ -33,25 +33,6 @@ const previewImagePopup = new PopupWithImage({
   popupSelector: "#card-preview-modal",
 });
 
-const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
-  const cardData = {
-    name: data.title,
-    link: data.url,
-  };
-  api
-    .addCards(cardData)
-    .then((res) => {
-      const card = createCard(res);
-      section.addItem(card);
-      addCardFormElement.reset();
-      addFormValidator.resetValidation();
-      addCardPopup.close();
-    })
-    .catch((err) => {
-      console.error(`Error, could not add card: ${err}`);
-    });
-});
-
 const cardList = new Section(
   {
     items: [],
@@ -62,6 +43,25 @@ const cardList = new Section(
   ".cards__list"
 );
 
+const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
+  const cardData = {
+    name: data.title,
+    link: data.url,
+  };
+  api
+    .addCards(cardData)
+    .then((res) => {
+      const card = createCard(res);
+      cardList.addItem(card);
+      addCardFormElement.reset();
+      addFormValidator.resetValidation();
+      addCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(`Error, could not add card: ${err}`);
+    });
+});
+
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   descriptionSelector: ".profile__description",
@@ -71,23 +71,26 @@ const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 function handleLikeClick(data) {
-  api
-    .likeACard(data._id)
-    .then((res) => {
-      console.log("0000");
-      console.log(res);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-  api
-    .dislikeACard(data._id)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  if (!data._isLiked) {
+    api
+      .likeACard(data._id)
+      .then((res) => {
+        console.log("0000");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    api
+      .dislikeACard(data._id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
 
 function handleDeleteClick() {
@@ -164,21 +167,3 @@ api.getInitialCards().then((res) => {
   console.log(res);
   cardList.addItem(createCard(res[0]));
 });
-
-// api
-//   .likeACard(cardId)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
-// api
-//   .dislikeACard(cardId)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });

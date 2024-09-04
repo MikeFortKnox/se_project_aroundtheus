@@ -10,6 +10,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._isliked = data.isliked;
     this._cardSelector = cardSelector;
     this._handlePreviewPicture = handlePreviewPicture;
     // assign the handlers to the this object
@@ -30,7 +31,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
+        this._handleDeleteClick();
       });
     this._cardImage.addEventListener("click", () =>
       this._handlePreviewPicture({ name: this._name, link: this._link })

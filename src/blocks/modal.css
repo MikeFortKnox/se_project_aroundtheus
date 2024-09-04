@@ -164,3 +164,10 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.modal__form_delete {
+  background-color: #fff;
+  width: 430px;
+  height: 181px;
+  padding: 20px;
+}
