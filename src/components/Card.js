@@ -67,6 +67,11 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
   getView() {
     this._cardElement = this._getTemplate();
 

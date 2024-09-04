@@ -43,6 +43,8 @@ const cardList = new Section(
   ".cards__list"
 );
 
+const confirmDeleteModal = new PopupWithForm("#delete-modal");
+
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   const cardData = {
     name: data.title,
@@ -110,6 +112,7 @@ function handleDeleteClick(card) {
       .handleDeleteCard(card._id)
       .then((res) => {
         console.log(res);
+        card.handleDeleteCard();
       })
       .catch((err) => {
         console.error(err);

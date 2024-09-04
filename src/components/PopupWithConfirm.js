@@ -8,8 +8,7 @@ export default class PopupWithConfirm extends Popup {
     this._modalButton = this._form.querySelector(".modal__button");
   }
 
-  _removeCard(cardData) {
-    cardData.remove();
-    cardData = null;
+  setSubmitFunction(fnc) {
+    this._submitFunction = fnc;
   }
 }
