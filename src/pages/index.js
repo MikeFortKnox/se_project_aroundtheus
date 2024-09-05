@@ -45,6 +45,10 @@ const cardList = new Section(
 );
 
 const confirmDeleteModal = new PopupWithConfirm("#delete-modal");
+confirmDeleteModal.setEventListeners();
+
+const editAvatarModal = new PopupWithForm("#edit-avatar-modal");
+editAvatarModal.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   const cardData = {
@@ -177,6 +181,12 @@ profileEditButton.addEventListener("click", () => {
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
 });
+
+// add event listener to avatar
+document.querySelector(".profile__image").addEventListener("click", () => {
+  editAvatarModal.open();
+});
+// when it fires, open avatar image modal
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

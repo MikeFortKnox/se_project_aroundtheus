@@ -51,12 +51,9 @@
 .modal__heading {
   font-size: 24px;
   font-weight: 900;
-  /* margin-left: 36px; */
 }
 
 .modal__form {
-  /* margin-left: 36px;
-  margin-right: 36px; */
   border-radius: 10px;
   display: grid;
 }
@@ -170,4 +167,16 @@
   width: 430px;
   height: 181px;
   padding: 20px;
+}
+
+.modal__input-type-url {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/Edit-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }

@@ -43,7 +43,7 @@ class Api {
       });
   }
 
-  handleDeleteCard() {
+  handleDeleteCard(cardId) {
     return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._options.headers,
