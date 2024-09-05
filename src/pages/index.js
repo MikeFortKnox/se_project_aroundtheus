@@ -19,6 +19,7 @@ import {
   addNewCardButton,
   settings,
 } from "../utils/constants.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import Api from "../components/API.js";
 
 const api = new Api({
@@ -43,7 +44,7 @@ const cardList = new Section(
   ".cards__list"
 );
 
-const confirmDeleteModal = new PopupWithForm("#delete-modal");
+const confirmDeleteModal = new PopupWithConfirm("#delete-modal");
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   const cardData = {
