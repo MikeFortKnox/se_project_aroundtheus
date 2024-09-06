@@ -9,6 +9,8 @@ import {
   // initialCards,
   profileEditModal,
   profileEditButton,
+  deleteModal,
+  editAvatarModal,
   addCardModal,
   profileTitle,
   profileDescription,
