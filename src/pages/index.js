@@ -82,7 +82,6 @@ function handleLikeClick(data) {
     api
       .likeACard(data._id)
       .then((res) => {
-        console.log("0000");
         console.log(res);
       })
       .catch((err) => {

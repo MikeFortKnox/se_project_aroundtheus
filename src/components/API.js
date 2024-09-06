@@ -65,12 +65,6 @@ class Api {
       method: "PUT",
       headers: this._options.headers,
     })
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(`Error: ${res.status}`);
-        }
-        return res.json();
-      })
       .then(this._handleResponse)
       .catch((err) => {
         console.error(err);
@@ -81,14 +75,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._options.headers,
-    })
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(`Error: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then(this._handleResponse);
+    }).then(this._handleResponse);
     // .catch((err) => {
     //   console.error(err);
     // });
