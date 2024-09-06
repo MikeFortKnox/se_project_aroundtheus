@@ -21,6 +21,7 @@ import {
 } from "../utils/constants.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import Api from "../components/API.js";
+import { data } from "autoprefixer";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -47,7 +48,10 @@ const cardList = new Section(
 const confirmDeleteModal = new PopupWithConfirm("#delete-modal");
 confirmDeleteModal.setEventListeners();
 
-const editAvatarModal = new PopupWithForm("#edit-avatar-modal");
+const editAvatarModal = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarEditSubmit
+);
 editAvatarModal.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
@@ -73,9 +77,6 @@ const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   descriptionSelector: ".profile__description",
 });
-
-const editFormValidator = new FormValidator(settings, profileEditForm);
-const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 function handleLikeClick(data) {
   if (!data._isLiked) {
@@ -168,6 +169,20 @@ function handleProfileEditSubmit(userData) {
   // userInfo.setUserInfo({ name, description });
 }
 
+function handleAvatarEditSubmit(input) {
+  const link = inputValue.link;
+  editAvatarModal.textContent = "Saving...";
+  api
+    .editProfileImage(link)
+    .then((userData) => {
+      avatarUserInfo.setAvatarInfo(userData.link);
+      editAvatarModal.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 // Event Listeners
 
 profileEditButton.addEventListener("click", () => {
@@ -187,8 +202,13 @@ document.querySelector(".profile__image").addEventListener("click", () => {
 });
 // when it fires, open avatar image modal
 
+const editFormValidator = new FormValidator(settings, profileEditForm);
+const addFormValidator = new FormValidator(settings, addCardFormElement);
+const editAvatarValidator = new FormValidator(settings);
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+editAvatarValidator.enableValidation();
 
 api.getInitialCards().then((res) => {
   console.log(res);
