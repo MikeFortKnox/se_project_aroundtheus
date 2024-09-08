@@ -169,6 +169,18 @@
   padding: 20px;
 }
 
+.modal__edit-avatar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal__edit-avatar:hover {
+  opacity: 1;
+}
+
 /* .modal__input-type-url {
   position: absolute;
   top: 0;

@@ -79,25 +79,10 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
-    formList.forEach((formElement) => {
-      formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-        this._isValid(formElement);
-      });
-      this._inputList = Array.from(
-        formElement.querySelectorAll(this._inputSelector)
-      );
-      this._buttonElement = formElement.querySelector(
-        this._submitButtonSelector
-      );
-      this._inputList.forEach((inputElement) => {
-        inputElement.addEventListener("input", () => {
-          this._isValid(formElement);
-          this._toggleButtonState(this._inputList, this._buttonElement);
-        });
-      });
+    this._formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
     });
+    this._setEventListeners();
   }
 }
 
