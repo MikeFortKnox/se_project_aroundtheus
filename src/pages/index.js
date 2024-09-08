@@ -10,7 +10,7 @@ import {
   profileEditModal,
   profileEditButton,
   deleteModal,
-  editAvatarModal,
+  editAvatar,
   addCardModal,
   profileTitle,
   profileDescription,
