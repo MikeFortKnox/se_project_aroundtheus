@@ -23,7 +23,7 @@
           <img
             src="<%=require('./images/jacques.png')%>"
             alt="Avatar"
-            class="profile__image"
+            class="profile__image profile__image-edit"
           />
           <div class="profile__info">
             <div class="profile__items">
@@ -171,6 +171,7 @@
       <div class="modal__container">
         <button class="modal__close" type="button"></button>
         <p class="modal__heading">Change Profile Picture</p>
+
         <form class="modal__form" id="edit-avatar-form">
           <label class="modal__label">
             <input
@@ -188,11 +189,6 @@
             type="submit"
             disabled
           >
-            <img
-              class="modal__edit-avatar"
-              src="<%=require('./images/Edit-icon.svg')%>"
-              alt=""
-            />
             Save
           </button>
         </form>

@@ -206,7 +206,7 @@ document.querySelector(".profile__image").addEventListener("click", () => {
 
 const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addCardFormElement);
-const editAvatarValidator = new FormValidator(settings);
+const editAvatarValidator = new FormValidator(settings, editAvatar);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

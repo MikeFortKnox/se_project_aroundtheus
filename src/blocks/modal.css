@@ -169,16 +169,19 @@
   padding: 20px;
 }
 
-.modal__edit-avatar {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+.profile__image-edit {
+  background: transparent url(../images/Edit-icon.svg) center no-repeat;
+  background-color: #000;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: none;
 }
 
-.modal__edit-avatar:hover {
-  opacity: 1;
+.profile__image-edit:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  visibility: visible;
 }
 
 /* .modal__input-type-url {

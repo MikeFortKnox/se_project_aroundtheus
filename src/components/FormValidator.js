@@ -79,10 +79,14 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    this._formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
-    this._setEventListeners();
+    if (this._formEl) {
+      this._formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+      this._setEventListeners();
+    } else {
+      console.error("Form element not found");
+    }
   }
 }
 
