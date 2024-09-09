@@ -173,7 +173,7 @@ function handleProfileEditSubmit(userData) {
       name: updateUserData.name,
       description: updateUserData.about,
     });
-    profileEditModal.close();
+    editProfilePopup.close();
   });
 
   // userInfo.setUserInfo({ name, description });
