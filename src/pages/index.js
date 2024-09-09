@@ -186,7 +186,7 @@ function handleAvatarEditSubmit(input) {
   api
     .editProfileImage(link)
     .then((userData) => {
-      userInfo.avatarUserInfo.setAvatarInfo(userData.avatar);
+      userInfo.setAvatarInfo(userData.avatar);
       editAvatarModal.close();
     })
     .catch((err) => {

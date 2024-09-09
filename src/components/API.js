@@ -28,7 +28,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._options.headers,
-      body: JSON.stringify({ avatar: link }), // send as the body of the request
+      body: JSON.stringify({ avatar: link }),
     })
       .then(this._handleResponse)
       .catch((err) => {

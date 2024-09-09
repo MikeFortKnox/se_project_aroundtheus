@@ -30,7 +30,7 @@ export default class UserInfo {
     this._descriptionInfo.textContent = description;
   }
 
-  setAvatarInfo({ avatarLink }) {
+  setAvatarInfo(avatarLink) {
     this._avatarElement.src = avatarLink;
   }
 }
