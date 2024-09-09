@@ -47,7 +47,10 @@ const cardList = new Section(
   ".cards__list"
 );
 
-const confirmDeleteModal = new PopupWithConfirm("#delete-modal");
+const confirmDeleteModal = new PopupWithConfirm(
+  "#delete-modal",
+  handleDeleteClick
+);
 confirmDeleteModal.setEventListeners();
 
 const editAvatarModal = new PopupWithForm(
@@ -114,9 +117,14 @@ function handleLikeClick(data) {
 // }
 
 function handleDeleteClick(card) {
+  const cardId = card._id;
+  if (!cardId) {
+    console.error("card._id is undefined");
+    return;
+  }
   confirmDeleteModal.setSubmitFunction(() => {
     api
-      .handleDeleteCard(card._id)
+      .handleDeleteCard(cardId)
       .then((res) => {
         console.log(res);
         card.handleDeleteCard();
