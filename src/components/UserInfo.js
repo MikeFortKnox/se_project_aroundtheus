@@ -18,13 +18,19 @@ export default class UserInfo {
     };
   }
 
+  avatarUserInfo() {
+    return {
+      avatarLink: this._avatarElement.src,
+    };
+  }
+
   // use when submitting the submitting edit modal
   setUserInfo({ name, description }) {
     this._nameInfo.textContent = name;
     this._descriptionInfo.textContent = description;
   }
 
-  setAvatarInfo(avatarLink) {
+  setAvatarInfo({ avatarLink }) {
     this._avatarElement.src = avatarLink;
   }
 }
