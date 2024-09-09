@@ -180,7 +180,7 @@ function handleProfileEditSubmit(userData) {
 }
 
 function handleAvatarEditSubmit(input) {
-  const link = inputValue.link;
+  const link = input.avatar;
   editAvatarModal.textContent = "Saving...";
   api
     .editProfileImage(link)

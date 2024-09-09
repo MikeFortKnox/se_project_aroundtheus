@@ -23,21 +23,14 @@ class Api {
     return res.json();
   }
 
-  editProfileImage() {
+  editProfileImage(link) {
+    // receive link
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._options.headers,
+      body: JSON.stringify({ avatar: link }), // send as the body of the request
     })
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(`Error: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
+      .then(this._handleResponse)
       .catch((err) => {
         console.error(err);
       });
