@@ -1,8 +1,9 @@
 export default class UserInfo {
-  constructor({ nameSelector, descriptionSelector }) {
+  constructor({ nameSelector, descriptionSelector, avatarSelector }) {
     // this._profileInfo = document.querySelector(userInfo);
     this._nameInfo = document.querySelector(nameSelector);
     this._descriptionInfo = document.querySelector(descriptionSelector);
+    this._avatarElement = document.querySelector(avatarSelector);
   }
 
   // use when opening profile edit modal
@@ -21,5 +22,9 @@ export default class UserInfo {
   setUserInfo({ name, description }) {
     this._nameInfo.textContent = name;
     this._descriptionInfo.textContent = description;
+  }
+
+  setAvatarInfo(avatarLink) {
+    this._avatarElement.src = avatarLink;
   }
 }

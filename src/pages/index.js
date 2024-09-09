@@ -81,6 +81,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+  avatarSelector: ".profile__image",
 });
 
 function handleLikeClick(data) {
@@ -185,7 +186,7 @@ function handleAvatarEditSubmit(input) {
   api
     .editProfileImage(link)
     .then((userData) => {
-      avatarUserInfo.setAvatarInfo(userData.link);
+      userInfo.avatarUserInfo.setAvatarInfo(userData.link);
       editAvatarModal.close();
     })
     .catch((err) => {
