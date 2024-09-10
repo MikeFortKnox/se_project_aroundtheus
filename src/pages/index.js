@@ -168,14 +168,17 @@ function handleCardPreview(cardData) {
 
 function handleProfileEditSubmit(userData) {
   const { name, description } = userData;
-  api.updateUserProfile({ name, about: description }).then((updateUserData) => {
-    console.log(updateUserData);
-    userInfo.setUserInfo({
-      name: updateUserData.name,
-      description: updateUserData.about,
+  api
+    .updateUserProfile({ name, about: description, avatar })
+    .then((updateUserData) => {
+      console.log(updateUserData);
+      userInfo.setUserInfo({
+        name: updateUserData.name,
+        description: updateUserData.about,
+      });
+      userInfo.setAvatarInfo(updateUserData.avatar);
+      editProfilePopup.close();
     });
-    editProfilePopup.close();
-  });
 
   // userInfo.setUserInfo({ name, description });
 }

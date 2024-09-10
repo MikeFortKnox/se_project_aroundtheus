@@ -76,6 +76,8 @@ class Api {
     // });
   }
 
+  /* if card is liked - we call dislikeACard, otherwise we call like a Card */
+
   addCards({ name, link }) {
     return (
       fetch(`${this._options.baseUrl}/cards`, {
