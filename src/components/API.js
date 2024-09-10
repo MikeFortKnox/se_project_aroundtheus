@@ -6,7 +6,13 @@ class Api {
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: this._options.headers,
-    }).then((res) => res.json());
+    }).then(this._handleResponse);
+  }
+
+  getUserInfo() {
+    return fetch(`${this._options.baseUrl}/users/me`, {
+      headers: this._options.headers,
+    }).then(this._handleResponse);
   }
 
   updateUserProfile(userData) {

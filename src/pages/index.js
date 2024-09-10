@@ -87,18 +87,20 @@ const userInfo = new UserInfo({
 function handleLikeClick(data) {
   if (!data._isLiked) {
     api
-      .likeACard(data._id)
+      .likeACard(data._id, { method: "PUT" })
       .then((res) => {
         console.log(res);
+        data._isLiked = true;
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
     api
-      .dislikeACard(data._id)
+      .dislikeACard(data._id, { method: "DELETE" })
       .then((res) => {
         console.log(res);
+        data._isLiked = false;
       })
       .catch((err) => {
         console.error(err);
@@ -168,17 +170,15 @@ function handleCardPreview(cardData) {
 
 function handleProfileEditSubmit(userData) {
   const { name, description } = userData;
-  api
-    .updateUserProfile({ name, about: description, avatar })
-    .then((updateUserData) => {
-      console.log(updateUserData);
-      userInfo.setUserInfo({
-        name: updateUserData.name,
-        description: updateUserData.about,
-      });
-      userInfo.setAvatarInfo(updateUserData.avatar);
-      editProfilePopup.close();
+  api.updateUserProfile({ name, about: description }).then((updateUserData) => {
+    console.log(updateUserData);
+    userInfo.setUserInfo({
+      name: updateUserData.name,
+      description: updateUserData.about,
     });
+
+    editProfilePopup.close();
+  });
 
   // userInfo.setUserInfo({ name, description });
 }
@@ -211,9 +211,11 @@ addNewCardButton.addEventListener("click", () => {
 });
 
 // add event listener to avatar
-document.querySelector(".profile__image").addEventListener("click", () => {
-  editAvatarModal.open();
-});
+document
+  .querySelector(".profile__avatar-edit")
+  .addEventListener("click", () => {
+    editAvatarModal.open();
+  });
 // when it fires, open avatar image modal
 
 const editFormValidator = new FormValidator(settings, profileEditForm);
@@ -227,4 +229,10 @@ editAvatarValidator.enableValidation();
 api.getInitialCards().then((res) => {
   console.log(res);
   cardList.addItem(createCard(res[0]));
+});
+
+api.getUserInfo().then((userData) => {
+  const { name, about, avatar } = userData;
+  userInfo.setUserInfo({ name: name, description: about });
+  userInfo.setAvatarInfo(avatar);
 });
