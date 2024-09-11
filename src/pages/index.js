@@ -85,7 +85,7 @@ const userInfo = new UserInfo({
 });
 
 function handleLikeClick(data) {
-  if (!data._isLiked) {
+  if (!data.isLiked) {
     api
       .likeACard(data._id, { method: "PUT" })
       .then((res) => {
@@ -170,15 +170,18 @@ function handleCardPreview(cardData) {
 
 function handleProfileEditSubmit(userData) {
   const { name, description } = userData;
-  api.updateUserProfile({ name, about: description }).then((updateUserData) => {
-    console.log(updateUserData);
-    userInfo.setUserInfo({
-      name: updateUserData.name,
-      description: updateUserData.about,
-    });
+  api
+    .updateUserProfile({ name, about: description })
+    .then((updateUserData) => {
+      console.log(updateUserData);
+      userInfo.setUserInfo({
+        name: updateUserData.name,
+        description: updateUserData.about,
+      });
 
-    editProfilePopup.close();
-  });
+      editProfilePopup.close();
+    })
+    .catch((err) => console.log(err));
 
   // userInfo.setUserInfo({ name, description });
 }
@@ -226,13 +229,19 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
 
-api.getInitialCards().then((res) => {
-  console.log(res);
-  cardList.addItem(createCard(res[0]));
-});
+api
+  .getInitialCards()
+  .then((res) => {
+    console.log(res);
+    cardList.addItem(createCard(res[0]));
+  })
+  .catch((err) => console.log(err));
 
-api.getUserInfo().then((userData) => {
-  const { name, about, avatar } = userData;
-  userInfo.setUserInfo({ name: name, description: about });
-  userInfo.setAvatarInfo(avatar);
-});
+api
+  .getUserInfo()
+  .then((userData) => {
+    const { name, about, avatar } = userData;
+    userInfo.setUserInfo({ name: name, description: about });
+    userInfo.setAvatarInfo(avatar);
+  })
+  .catch((err) => console.log(err));

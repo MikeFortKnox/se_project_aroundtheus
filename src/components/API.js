@@ -35,11 +35,10 @@ class Api {
       method: "PATCH",
       headers: this._options.headers,
       body: JSON.stringify({ avatar: link }),
-    })
-      .then(this._handleResponse)
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._handleResponse);
+    // .catch((err) => {
+    //   console.error(err);
+    // });
   }
 
   handleDeleteCard(cardId) {
@@ -55,9 +54,9 @@ class Api {
         //   return res.json();
         // })
         .then(this._handleResponse)
-        .catch((err) => {
-          console.error(err);
-        })
+      // .catch((err) => {
+      //   console.error(err);
+      // })
     );
   }
 
@@ -65,11 +64,10 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._options.headers,
-    })
-      .then(this._handleResponse)
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._handleResponse);
+    // .catch((err) => {
+    //   console.error(err);
+    // });
   }
 
   dislikeACard(cardId) {

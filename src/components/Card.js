@@ -38,16 +38,16 @@ export default class Card {
     );
   }
 
-  _handleDeleteCard() {
-    api
-      .handleDeleteCard()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+  // _handleDeleteCard() {
+  //   api
+  //     .handleDeleteCard()
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
 
   _getTemplate() {
     return document

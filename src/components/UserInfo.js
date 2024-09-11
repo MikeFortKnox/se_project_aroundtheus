@@ -18,7 +18,7 @@ export default class UserInfo {
     };
   }
 
-  avatarUserInfo() {
+  getAvatarInfo() {
     return {
       avatarLink: this._avatarElement.src,
     };
