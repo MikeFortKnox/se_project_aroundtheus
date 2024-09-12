@@ -36,28 +36,13 @@ class Api {
       headers: this._options.headers,
       body: JSON.stringify({ avatar: link }),
     }).then(this._handleResponse);
-    // .catch((err) => {
-    //   console.error(err);
-    // });
   }
 
   handleDeleteCard(cardId) {
-    return (
-      fetch(`${this._options.baseUrl}/cards/${cardId}`, {
-        method: "DELETE",
-        headers: this._options.headers,
-      })
-        // .then((res) => {
-        //   if (!res.ok) {
-        //     return Promise.reject(`Error: ${res.status}`);
-        //   }
-        //   return res.json();
-        // })
-        .then(this._handleResponse)
-      // .catch((err) => {
-      //   console.error(err);
-      // })
-    );
+    return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._options.headers,
+    }).then(this._handleResponse);
   }
 
   likeACard(cardId) {
@@ -65,9 +50,6 @@ class Api {
       method: "PUT",
       headers: this._options.headers,
     }).then(this._handleResponse);
-    // .catch((err) => {
-    //   console.error(err);
-    // });
   }
 
   dislikeACard(cardId) {
@@ -75,31 +57,16 @@ class Api {
       method: "DELETE",
       headers: this._options.headers,
     }).then(this._handleResponse);
-    // .catch((err) => {
-    //   console.error(err);
-    // });
   }
 
   /* if card is liked - we call dislikeACard, otherwise we call like a Card */
 
   addCards({ name, link }) {
-    return (
-      fetch(`${this._options.baseUrl}/cards`, {
-        method: "POST",
-        headers: this._options.headers,
-        body: JSON.stringify({ name, link }),
-      })
-        // .then((res) => {
-        //   if (!res.ok) {
-        //     return Promise.reject(`Error: ${res.status}`);
-        //   }
-        //   return res.json();
-        // })
-        .then(this._handleResponse)
-    );
-    // .catch((err) => {
-    //   console.error(err);
-    // });
+    return fetch(`${this._options.baseUrl}/cards`, {
+      method: "POST",
+      headers: this._options.headers,
+      body: JSON.stringify({ name, link }),
+    }).then(this._handleResponse);
   }
 }
 

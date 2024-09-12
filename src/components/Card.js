@@ -61,7 +61,9 @@ export default class Card {
   _handleLikeIcon() {
     // api code goes in the handler in index.js
     this._handleLikeClick(this);
+  }
 
+  toggleLike() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");

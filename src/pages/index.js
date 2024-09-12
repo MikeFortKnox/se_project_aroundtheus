@@ -53,10 +53,10 @@ const confirmDeleteModal = new PopupWithConfirm(
 );
 confirmDeleteModal.setEventListeners();
 
-const editAvatarModal = new PopupWithForm(
-  "#edit-avatar-modal",
-  handleAvatarEditSubmit
-);
+const editAvatarModal = new PopupWithForm("#edit-avatar-modal", (input) => {
+  editAvatarModal.setLoading("Saving...");
+  handleAvatarEditSubmit(input);
+});
 editAvatarModal.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
@@ -64,6 +64,9 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
     name: data.title,
     link: data.url,
   };
+
+  addCardPopup.setLoading("Saving...");
+
   api
     .addCards(cardData)
     .then((res) => {
@@ -72,6 +75,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
       addCardFormElement.reset();
       addFormValidator.resetValidation();
       addCardPopup.close();
+      addCardPopup.setLoading("Save");
     })
     .catch((err) => {
       console.error(`Error, could not add card: ${err}`);
@@ -90,7 +94,8 @@ function handleLikeClick(data) {
       .likeACard(data._id, { method: "PUT" })
       .then((res) => {
         console.log(res);
-        data._isLiked = true;
+        data.isLiked = true;
+        data.toggleLike();
       })
       .catch((err) => {
         console.error(err);
@@ -100,24 +105,14 @@ function handleLikeClick(data) {
       .dislikeACard(data._id, { method: "DELETE" })
       .then((res) => {
         console.log(res);
-        data._isLiked = false;
+        data.isLiked = false;
+        data.toggleLike();
       })
       .catch((err) => {
         console.error(err);
       });
   }
 }
-
-// function handleDeleteClick() {
-//   api
-//     .handleDeleteCard()
-//     .then((res) => {
-//       console.log(res);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
-// }
 
 function handleDeleteClick(card) {
   const cardId = card._id;
@@ -152,10 +147,10 @@ function createCard(cardData) {
 
 previewImagePopup.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(
-  "#edit-modal",
-  handleProfileEditSubmit
-);
+const editProfilePopup = new PopupWithForm("#edit-modal", (userData) => {
+  editProfilePopup.setLoading("Saving...");
+  handleProfileEditSubmit(userData);
+});
 editProfilePopup.setEventListeners();
 
 addCardPopup.setEventListeners();
@@ -179,16 +174,15 @@ function handleProfileEditSubmit(userData) {
         description: updateUserData.about,
       });
 
+      profileEditForm.reset();
+
       editProfilePopup.close();
     })
     .catch((err) => console.log(err));
-
-  // userInfo.setUserInfo({ name, description });
 }
 
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
-  editAvatarModal.textContent = "Saving...";
   api
     .editProfileImage(link)
     .then((userData) => {
@@ -232,8 +226,9 @@ editAvatarValidator.enableValidation();
 api
   .getInitialCards()
   .then((res) => {
-    console.log(res);
-    cardList.addItem(createCard(res[0]));
+    res.forEach((item) => {
+      cardList.addItem(createCard(item));
+    });
   })
   .catch((err) => console.log(err));
 
