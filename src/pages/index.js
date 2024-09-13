@@ -79,6 +79,11 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
     })
     .catch((err) => {
       console.error(`Error, could not add card: ${err}`);
+    })
+    .finally(() => {
+      addCardFormElement.reset();
+      addFormValidator.resetValidation();
+      addCardPopup.setLoading("Save");
     });
 });
 
@@ -193,6 +198,9 @@ function handleAvatarEditSubmit(input) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      editAvatarModal.setLoading("Save");
     });
 }
 

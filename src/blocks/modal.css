@@ -51,6 +51,7 @@
 .modal__heading {
   font-size: 24px;
   font-weight: 900;
+  margin-top: 0;
 }
 
 .modal__form {
@@ -164,9 +165,9 @@
 
 .modal__form_delete {
   background-color: #fff;
-  width: 430px;
-  height: 181px;
-  padding: 20px;
+  /* width: 430px; */
+  /* height: 181px; */
+  padding: 10px;
 }
 
 .profile__image-edit {
