@@ -54,7 +54,7 @@ const confirmDeleteModal = new PopupWithConfirm(
 confirmDeleteModal.setEventListeners();
 
 const editAvatarModal = new PopupWithForm("#edit-avatar-modal", (input) => {
-  editAvatarModal.setLoading("Saving...");
+  // editAvatarModal.setLoading("Saving...");
   handleAvatarEditSubmit(input);
 });
 editAvatarModal.setEventListeners();
@@ -126,6 +126,7 @@ function handleDeleteClick(card) {
       .then((res) => {
         console.log(res);
         card.handleDeleteCard();
+        confirmDeleteModal.close();
       })
       .catch((err) => {
         console.error(err);
@@ -155,7 +156,7 @@ editProfilePopup.setEventListeners();
 
 addCardPopup.setEventListeners();
 
-cardList.renderItems();
+// cardList.renderItems();
 
 function handleCardPreview(cardData) {
   previewImagePopup.open(cardData);
@@ -187,6 +188,7 @@ function handleAvatarEditSubmit(input) {
     .editProfileImage(link)
     .then((userData) => {
       userInfo.setAvatarInfo(userData.avatar);
+      editAvatarModal.setLoading("Saving...");
       editAvatarModal.close();
     })
     .catch((err) => {
@@ -226,9 +228,7 @@ editAvatarValidator.enableValidation();
 api
   .getInitialCards()
   .then((res) => {
-    res.forEach((item) => {
-      cardList.addItem(createCard(item));
-    });
+    cardList.renderItems(res);
   })
   .catch((err) => console.log(err));
 

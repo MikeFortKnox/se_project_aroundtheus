@@ -12,7 +12,7 @@ export default class Section {
   // }
 
   // call on page load
-  renderItems() {
+  renderItems(items) {
     this.items.forEach((item) => {
       this.renderer(item);
       // const element = this.renderer(item);
