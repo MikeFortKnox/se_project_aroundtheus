@@ -54,7 +54,7 @@ const confirmDeleteModal = new PopupWithConfirm(
 confirmDeleteModal.setEventListeners();
 
 const editAvatarModal = new PopupWithForm("#edit-avatar-modal", (input) => {
-  // editAvatarModal.setLoading("Saving...");
+  editAvatarModal.setLoading("Saving...");
   handleAvatarEditSubmit(input);
 });
 editAvatarModal.setEventListeners();
@@ -193,7 +193,7 @@ function handleAvatarEditSubmit(input) {
     .editProfileImage(link)
     .then((userData) => {
       userInfo.setAvatarInfo(userData.avatar);
-      editAvatarModal.setLoading("Saving...");
+      // editAvatarModal.setLoading("Saving...");
       editAvatarModal.close();
     })
     .catch((err) => {
