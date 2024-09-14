@@ -184,7 +184,12 @@ function handleProfileEditSubmit(userData) {
 
       editProfilePopup.close();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      editProfilePopup.setLoading("Save");
+    });
 }
 
 function handleAvatarEditSubmit(input) {
