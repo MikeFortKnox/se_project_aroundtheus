@@ -53,10 +53,10 @@ const confirmDeleteModal = new PopupWithConfirm(
 );
 confirmDeleteModal.setEventListeners();
 
-const editAvatarModal = new PopupWithForm("#edit-avatar-modal", (input) => {
-  editAvatarModal.setLoading("Saving...");
-  handleAvatarEditSubmit(input);
-});
+const editAvatarModal = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarEditSubmit
+);
 editAvatarModal.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
@@ -81,8 +81,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
       console.error(`Error, could not add card: ${err}`);
     })
     .finally(() => {
-      addCardFormElement.reset();
-      addFormValidator.resetValidation();
+      // addCardFormElement.reset();
       addCardPopup.setLoading("Save");
     });
 });
@@ -195,6 +194,7 @@ function handleProfileEditSubmit(userData) {
 
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
+  editAvatarModal.setLoading("Saving...");
   api
     .editProfileImage(link)
     .then((userData) => {
