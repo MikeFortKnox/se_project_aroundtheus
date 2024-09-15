@@ -153,10 +153,10 @@ function createCard(cardData) {
 
 previewImagePopup.setEventListeners();
 
-const editProfilePopup = new PopupWithForm("#edit-modal", (userData) => {
-  editProfilePopup.setLoading("Saving...");
-  handleProfileEditSubmit(userData);
-});
+const editProfilePopup = new PopupWithForm(
+  "#edit-modal",
+  handleProfileEditSubmit
+);
 editProfilePopup.setEventListeners();
 
 addCardPopup.setEventListeners();
@@ -171,6 +171,7 @@ function handleCardPreview(cardData) {
 
 function handleProfileEditSubmit(userData) {
   const { name, description } = userData;
+  editProfilePopup.setLoading("Saving...");
   api
     .updateUserProfile({ name, about: description })
     .then((updateUserData) => {
