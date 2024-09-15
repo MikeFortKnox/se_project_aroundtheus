@@ -10,9 +10,6 @@ export default class PopupWithImage extends Popup {
   }
 
   open({ name, link }) {
-    // set the src, textContent and alt
-    // this._title = this._cardImage.name;
-    // this._link = this._cardImage.link;
     this._cardImage.src = link;
     this._cardImage.alt = name;
     this._cardTitle.textContent = name;

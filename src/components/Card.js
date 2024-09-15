@@ -1,9 +1,20 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handlePreviewPicture) {
-    this._name = name;
-    this._link = link;
+  // pass like and delete handlers from index.js
+  constructor(
+    data,
+    cardSelector,
+    handlePreviewPicture,
+    handleLikeClick,
+    handleDeleteClick
+  ) {
+    this._name = data.name;
+    this._link = data.link;
+    this._id = data._id;
+    this.isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handlePreviewPicture = handlePreviewPicture;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
@@ -11,22 +22,19 @@ export default class Card {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
+        // call the function that was passed from index.js
+        // pass appropriate arg(s) -- this object would work
         this._handleLikeIcon();
       });
     // ".card__delete-button"
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
+        this._handleDeleteClick(this);
       });
     this._cardImage.addEventListener("click", () =>
       this._handlePreviewPicture({ name: this._name, link: this._link })
     );
-  }
-
-  _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
   }
 
   _getTemplate() {
@@ -36,17 +44,38 @@ export default class Card {
       .cloneNode(true);
   }
 
+  // private method becomes public
+  // for use in handler .then()
   _handleLikeIcon() {
+    // api code goes in the handler in index.js
+    this._handleLikeClick(this);
+  }
+
+  toggleLike() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
 
+  setLike() {
+    if (this.isLiked) {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.add("card__like-button_active");
+    } else {
+      this._cardElement
+        .querySelector(".card__like-button")
+        .classList.remove("card__like-button_active");
+    }
+  }
+
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
   getView() {
     this._cardElement = this._getTemplate();
-    // get the card view
-    // set event listeners
-    // get elements inside card
 
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardName = this._cardElement.querySelector(".card__text");
@@ -54,9 +83,8 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardName.textContent = this._name;
-
+    this.setLike();
     this._setEventListeners();
-    // return the card
     return this._cardElement;
   }
 }

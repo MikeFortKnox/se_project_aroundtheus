@@ -5,14 +5,11 @@ export default class PopupWithForm extends Popup {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._handleFormSubmit = handleFormSubmit;
-    this._submitButton = this._popupElement.querySelector("modal__button-save");
+    this._submitButton = this._popupElement.querySelector(
+      ".modal__button-save"
+    );
     this._inputList = [...this._popupForm.querySelectorAll("modal__input")];
-    // this._formElement = this._popupElement.querySelector(".modal__form");
   }
-
-  // close() {
-  //   super.close();
-  // }
 
   _getInputValues(element) {
     const data = new FormData(element);
@@ -30,8 +27,14 @@ export default class PopupWithForm extends Popup {
 
       const data = this._getInputValues(e.target);
       this._handleFormSubmit(data);
-      this.reset();
     });
+  }
+
+  setLoading(btnMsg) {
+    // get the button element
+    // console.log("I AM " + btnMsg);
+    // console.log(this._submitButton);
+    this._submitButton.textContent = btnMsg;
   }
 
   reset() {

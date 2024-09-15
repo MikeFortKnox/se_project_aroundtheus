@@ -51,12 +51,10 @@
 .modal__heading {
   font-size: 24px;
   font-weight: 900;
-  /* margin-left: 36px; */
+  margin-top: 0;
 }
 
 .modal__form {
-  /* margin-left: 36px;
-  margin-right: 36px; */
   border-radius: 10px;
   display: grid;
 }
@@ -164,3 +162,37 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.modal__form_delete {
+  background-color: #fff;
+  /* width: 430px; */
+  /* height: 181px; */
+  padding: 10px;
+}
+
+.profile__image-edit {
+  background: transparent url(../images/Edit-icon.svg) center no-repeat;
+  background-color: #000;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: none;
+}
+
+.profile__image-edit:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  visibility: visible;
+}
+
+/* .modal__input-type-url {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/Edit-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+} */
