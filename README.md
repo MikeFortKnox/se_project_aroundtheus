@@ -4,7 +4,7 @@
 
 **Intro**
 
-This project is a webpage created in the style of a social media app. It is made using HTML and CSS. It will have the ability to scale down to various dimensions in order to fit the appropriate screen resolution. This will work for all types of smart phones and tablets and will scale accordingly. Please take a look at the images and profile that has been created and enjoy the pictures!
+This project is a webpage created in the style of a social media app which will be interactive to allow users to add, like, and delete images. It is made using HTML, CSS, and JavaScript. It will have the ability to scale down to various dimensions in order to fit the appropriate screen resolution. This will work for all types of smart phones and tablets and will scale accordingly. Please take a look at the images and profile that has been created and enjoy the pictures!
 
 **Figma**
 
